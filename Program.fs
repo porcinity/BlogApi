@@ -18,11 +18,22 @@ let webApp =
                 route "/posts" >=> getAllPostsHandler
                 routef "/posts/%O" getPostHandler
                 routef "/posts/%O/comments" getCommentsHandler
+                routef "/comments/%O" getCommentHandlerAsync
             ]
         POST >=>
             choose [
                 route "/posts" >=> createBlogPost
                 routef "/posts/%O/comments" createCommentHandler
+            ]
+        PUT >=>
+            choose [
+                routef "/posts/%O" updatePostHandlerAsync
+                routef "/comments/%O" updateCommentHandler
+            ]
+        DELETE >=>
+            choose [
+                routef "/posts/%O" deletePostHandlerAsync
+                routef "/comments/%O" deleteCommentHandler
             ]
         setStatusCode 404 >=> text "Not Found" ]
 

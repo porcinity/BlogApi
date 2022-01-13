@@ -82,7 +82,7 @@ let findAllCommentsAsync postId =
 let findCommentByIdAsync commentId =
     connStr
     |> Sql.connect
-    |> Sql.query "select comment_id, comment_content from comments where comment_id = @id"
+    |> Sql.query "select comment_id, comment_content, post_id from comments where comment_id = @id"
     |> Sql.parameters ["@id", Sql.uuid commentId]
     |> Sql.executeAsync (fun read ->
         {
@@ -100,6 +100,14 @@ let insertCommentAsync comment =
         "@content", Sql.text comment.Content
         "@pid", Sql.uuid comment.PostId
     ]
+    |> Sql.executeNonQueryAsync
+    
+let updateCommentAsync (comment: Comment) =
+    connStr
+    |> Sql.connect
+    |> Sql.query "update comments set comment_content = @content
+                  where comment_id = @id"
+    |> Sql.parameters [ "@content", Sql.text comment.Content; "@id", Sql.uuid comment.CommentId ]
     |> Sql.executeNonQueryAsync
     
 let deleteCommentAsync commentId =
