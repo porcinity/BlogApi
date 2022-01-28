@@ -1,4 +1,5 @@
 module GiraffeApi.Handlers
+
 open Giraffe
 open GiraffeApi.Dtos
 open GiraffeApi.Models
@@ -8,9 +9,9 @@ open Microsoft.FSharp.Collections
 
 let getAllPostsHandler next ctx = task {
     let! all = findAllPostsAsync ()
-    return! json all next ctx    
+    return! json all next ctx
 }
-  
+
 let createBlogPost =
     fun next (ctx: HttpContext) -> task {
         let! dto = ctx.BindJsonAsync<PostDto> ()

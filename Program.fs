@@ -10,6 +10,19 @@ open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
 open Giraffe
 open GiraffeApi.Handlers
+open Giraffe.ViewEngine
+
+let indexView =
+    html [] [
+        
+        head [] [
+            title [] [ str "The Most Beautiful Blog Posts" ]
+        ]
+        
+        body [] [
+            
+        ]
+    ]
 
 let webApp =
     choose [

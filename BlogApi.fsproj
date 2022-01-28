@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <AssemblyName>GiraffeApi.App</AssemblyName>
+    <AssemblyName>BlogApi.App</AssemblyName>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    <RootNamespace>BlogApi</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

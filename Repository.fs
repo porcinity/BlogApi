@@ -3,7 +3,7 @@ open GiraffeApi.Models
 open Npgsql.FSharp
 open System
 
-let connStr = "Host=localhost;Database=blog;Username=anthony;Password=itb"
+let connStr = "Host=localhost;Database=blog;Username=pigg"
 
 // Posts table
 let findAllPostsAsync () =
